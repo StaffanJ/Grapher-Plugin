@@ -6,11 +6,11 @@ The features that exists are a bar graph that works both vertically and horizont
 You can edit the height and width of the element by changing it it settings.
 
 
-var settings = $.extend({
-    data: objects.votes,
-    height: '200px',
-    width: '500px',
-    padding: 0
-  }, options );
+var settings = $.extend({</br>
+    data: objects.votes,</br>
+    height: '200px',</br>
+    width: '500px',</br>
+    padding: 0</br>
+  }, options );</br>
   
   
