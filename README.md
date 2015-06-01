@@ -1,7 +1,7 @@
 # Grapher-Plugin
 
 A plugin that handles two basic graphs by simply adding a few lines of HTML, some CSS and the JavaScript file.
-
+<h2>Graph Plugin</h2>
 Simply install the plugin by downloading the files and adding the following HTML code:</br>
 
 &lt;div class="wrapper"&gt;</br>
@@ -32,6 +32,7 @@ var settings = $.extend({</br>
     padding: 0</br>
   }, options );</br>
 
+<h2>Tooltip</p>
 There is also another feature available for your use and that is a tooltip that works both on the graph bar but also on other elements.</br>
 If you only want to use it on the graph there is no need for change. </br>
 But if you want to change it or add it to another element there is a few things you need to change.</br>
