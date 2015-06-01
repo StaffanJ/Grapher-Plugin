@@ -32,7 +32,7 @@ var settings = $.extend({</br>
     padding: 0</br>
   }, options );</br>
 
-<h2>Tooltip</p>
+<h2>Tooltip</h2>
 There is also another feature available for your use and that is a tooltip that works both on the graph bar but also on other elements.</br>
 If you only want to use it on the graph there is no need for change. </br>
 But if you want to change it or add it to another element there is a few things you need to change.</br>
