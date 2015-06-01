@@ -35,3 +35,20 @@ var settings = $.extend({</br>
 There is also another feature available for your use and that is a tooltip that works both on the graph bar but also on other elements.</br>
 If you only want to use it on the graph there is no need for change. </br>
 But if you want to change it or add it to another element there is a few things you need to change.</br>
+
+First there is a settings option here aswell:</br>
+
+var settings = $.extend({</br>
+    element: '.addIndex'</br>
+}, options );</br>
+
+You change it to the element you want to use it on, with either the Class or the Id of it.</br>
+There is also one thing you need to change and that is the tooltip that is displayed, this is the showTooltip function:
+
+showTooltip = function(event) {</br>
+    var addIndexId = $(this).attr('data-id'); <b>*Remove this line*</b></br>
+    $('div.tooltip').remove();</br>
+    $('&lt;div class='tooltip'&gt;&lt;p&gt; Total number of votes: ' + addIndexId + '&lt;/p&gt;&lt;/div&gt;') <b>*Change this line*</b></br>
+        .appendTo('body');</br>
+    changeTooltipPosition(event);</br>
+},</br>
