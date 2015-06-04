@@ -26,7 +26,7 @@ Padding is simply the padding between the bars.</br>
 These settings are the same, the only thing that separates them are the width and height of the element.</br>
 
 var settings = $.extend({</br>
-    data: votes,</br>
+    data: data,</br>
     element: $("#chart"),</br>
     height: '200px',</br>
     width: '500px',</br>
