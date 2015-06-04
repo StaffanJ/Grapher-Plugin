@@ -30,7 +30,7 @@ var settings = $.extend({</br>
     element: $("#chart"),</br>
     height: '200px',</br>
     width: '500px',</br>
-    padding: 0</br>
+    padding: 10</br>
   }, options );</br>
 
 <h2>Tooltip</h2>
