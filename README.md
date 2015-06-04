@@ -27,6 +27,7 @@ These settings are the same, the only thing that separates them are the width an
 
 var settings = $.extend({</br>
     data: votes,</br>
+    element: $("#chart"),</br>
     height: '200px',</br>
     width: '500px',</br>
     padding: 0</br>
