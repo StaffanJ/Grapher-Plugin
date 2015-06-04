@@ -21,7 +21,7 @@ $('body').drawOverhead({</br>
 
 The features that exists are a bar graph that works both vertically and horizontally. </br>
 You can edit the height and width of the element by changing it it settings.</br>
-The data options is the data that you want to display in the graph, simply add or remove the properties in the votes object.</br>
+The data options is the data that you want to display in the graph, simply add or remove the properties in the data object.</br>
 Padding is simply the padding between the bars.</br>
 These settings are the same, the only thing that separates them are the width and height of the element.</br>
 
