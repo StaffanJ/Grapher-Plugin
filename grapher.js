@@ -1,23 +1,27 @@
+/*--------------------------------------------------------------------------------------------------------------
+            The plugin Grapher, please enjoy if you have any questions please contact me on GitHub
+----------------------------------------------------------------------------------------------------------------*/
+
 (function( $ ) {
 /*----------------------------------------------------------------------------
     Add values to the object votes to add more attirubes to the graph.
 -----------------------------------------------------------------------------*/
-var votes = [{name: "Johan", numberOfVotes: 1},
+var data = [{name: "Johan", numberOfVotes: 1},
                 {name: "Staffan", numberOfVotes: 2},
                 {name: "Kristofer", numberOfVotes: 3},
                 {name: "Dalibor", numberOfVotes: 4},
                 {name: "Lisa", numberOfVotes: 5}],
     initiate = 0;
 
-/*------------------------------------------------------------------
-        The element that you want to add the graph to.
-------------------------------------------------------------------*/
-chart = $("#chart");
-
 $.fn.drawBar = function(options){
 
+/*----------------------------------------------------------------------
+        The different settings that you want too add to the graph .
+-----------------------------------------------------------------------*/
+
     var settings = $.extend({
-        data: votes,
+        data: data,
+        element: $("#chart"),
         height: '200px',
         width: '500px',
         padding: 10
@@ -26,13 +30,13 @@ $.fn.drawBar = function(options){
     /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------
             Assigning the height and width to the element, depending on what your height to you need to change newparagraphs margin-bottom css according to it.
     ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-    chart.css('height', settings.height);
-    chart.css('width', settings.width);
+    settings.element.css('height', settings.height);
+    settings.element.css('width', settings.width);
 
     /*--------------------------------------------------------------------------------
         Declaring variables that handle different things inside the draw function.
     ----------------------------------------------------------------------------------*/
-    var barwidth = ((chart.width()-(settings.data.length-1)*settings.padding-(settings.data.length)*10)/settings.data.length),
+    var barwidth = ((settings.element.width()-(settings.data.length-1)*settings.padding-(settings.data.length)*10)/settings.data.length),
         left = 0,
         totalVotes = 0,
         percentage = [0, 25, 50, 75, 100];
@@ -49,7 +53,7 @@ $.fn.drawBar = function(options){
             
             var newparagraph = $('<p class="percentageParagraph">|' + percentage[i] + '%</p>');
             newparagraph.css('bottom', percentage[i]-10 + '%');
-            chart.append(newparagraph);
+            settings.element.append(newparagraph);
         });
 
         $(settings.data).each(function(i){
@@ -61,7 +65,7 @@ $.fn.drawBar = function(options){
                 newbar.width(barwidth+"px");
                 newbar.height((100/totalVotes)*settings.data[i].numberOfVotes+"%");
                 newbar.css('left', left+"px");
-                chart.append(newbar);
+                settings.element.append(newbar);
                 left += (barwidth+settings.padding+10);
         });
 
@@ -76,8 +80,13 @@ $.fn.drawBar = function(options){
 
 $.fn.drawOverhead = function (options){
 
+/*----------------------------------------------------------------------
+        The different settings that you want too add to the graph .
+-----------------------------------------------------------------------*/
+
     var settings = $.extend({
-        data: votes,
+        data: data,
+        element: $("#chart"),
         height: '500px',
         width: '200px',
         padding: 10
@@ -86,13 +95,13 @@ $.fn.drawOverhead = function (options){
     /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------
             Assigning the height and width to the element, depending on what your width to you need to change newparagraphs margin-bottom css according to it.
     ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-    chart.css('height', settings.height);
-    chart.css('width', settings.width);
+    settings.element.css('height', settings.height);
+    settings.element.css('width', settings.width);
 
     /*----------------------------------------------------------------------------------
         Declaring variables that handle different things inside the draw function.
     -----------------------------------------------------------------------------------*/
-    var barheight = ((chart.height()-(settings.data.length-1)*settings.padding-(settings.data.length)*10)/settings.data.length),
+    var barheight = ((settings.element.height()-(settings.data.length-1)*settings.padding-(settings.data.length)*10)/settings.data.length),
         top = 0,
         totalVotes = 0,
         percentage = [0, 25, 50, 75, 100];
@@ -106,7 +115,7 @@ $.fn.drawOverhead = function (options){
             ---------------------------------------------------------------------------------------------------*/
             var newparagraph = $('<p class="percentageParagraph">|' + percentage[i] + '%</p>');
             newparagraph.css('left', percentage[i] + '%');
-            chart.append(newparagraph);
+            settings.element.append(newparagraph);
         });
 
         $(settings.data).each(function(i){
@@ -118,7 +127,7 @@ $.fn.drawOverhead = function (options){
                 newbar.width((100/totalVotes)*settings.data[i].numberOfVotes+"%");
                 newbar.height(barheight+"px");
                 newbar.css('top', top-10+"px");
-                chart.append(newbar);
+                settings.element.append(newbar);
                 top += (barheight+settings.padding+10);
               
         });
@@ -135,9 +144,9 @@ $.fn.drawOverhead = function (options){
     $('body').toolTip({});
 };
 
-/*----------------------------------------------------------------------------------------
-    The funtion for displaying tooltip, binds different events to the .addIndex class.
------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------
+    The funtion for displaying tooltip, binds different events to the element that have been choosen.
+--------------------------------------------------------------------------------------------------------*/
 $.fn.toolTip = function(options) {
 
      var settings = $.extend({
@@ -150,7 +159,9 @@ $.fn.toolTip = function(options) {
             $('div.tooltip').css({top: tooltipY, left: tooltipX});
             
     },
-     
+    /*-------------------------------------------------------------
+        Here is were you change the tip you want to be displayed
+    ---------------------------------------------------------------*/
     showTooltip = function(event) {
         var addIndexId = $(this).attr('data-id');
             $('div.tooltip').remove();
@@ -168,11 +179,11 @@ $.fn.toolTip = function(options) {
         hover : showTooltip,
         mouseleave: hideTooltip
     });
-}
+};
 
-/*--------------------------------------------------------------------------------------------------------
-    Code that adds another vote to the graph, but since there is no place to save it it's worthless
-----------------------------------------------------------------------------------------------------------    
+/*-------------------------------------------------------------------------------------------------------------
+    Code that adds another vote to the graph, but since there is no place to save it it's not working
+----------------------------------------------------------------------------------------------------------------    
 chart.delegate('.addIndex', 'click', function(){
     var id = $(this).attr('data-name');
     $('#chart').html('');

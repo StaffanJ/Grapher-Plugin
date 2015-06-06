@@ -1,3 +1,31 @@
+body{max-width:980px;margin:0 auto;}
+
+#flash{margin:2em auto;background-color:lightgrey;min-height:10em;border:1px solid grey;padding:1em;
+.border-radius(10px);.box-shadow();}
+
+.exampleCode{
+  background-color: white;
+  border: 1px black solid;
+  code{
+    margin-left:15px;
+    margin-top: 10px;
+  }
+}
+#newChart{
+  position:relative
+}
+#downloadBtn{
+  width: 150px;
+  height:50px;
+  background: blue;
+  border: 1px darkblue solid;
+  margin: 0 auto;
+}
+#downloadBtn > a{
+  text-decoration: none;
+  color:white;
+}
+
 /*
   CSS for the grapher plugin, feel free to change it as you see fit.
 */
@@ -43,7 +71,6 @@
 }
 .graphBar{
   position:absolute;
-  //margin-top:40px;
   bottom: 0;
   background: #89b800;
   margin-left: 45px;
